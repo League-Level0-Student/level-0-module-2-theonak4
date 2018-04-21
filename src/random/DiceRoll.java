@@ -4,6 +4,8 @@
 package random;
 
 import java.awt.Dimension;
+import java.util.Random;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,7 +31,7 @@ public class DiceRoll {
 	public static void main(String[] args) {
 		new DiceRoll().run();
 	}
-	
+
 	public void run() {
 		try {
 			oneImg = new ImageIcon(getClass().getResource("dice 1.png"));
@@ -48,22 +50,33 @@ public class DiceRoll {
 		rollButton.addActionListener((e) -> {
 
 			// 1. Make randomChoice equal to a random number between 1 and 6
-			int randomChoice = 0;
+			Random r = new Random();
+
+			int rand = r.nextInt((6 - 1) + 1) + 1;
+			int randomChoice = rand;
 
 			// 2. Fix the code below so that it displays the correct image
-			if (randomChoice == 0) {
+			switch (randomChoice) {
+			case 1:
 				label.setIcon(oneImg);
-			} else if (randomChoice == 0) {
+				break;
+			case 2:
 				label.setIcon(twoImg);
-			} else if (randomChoice == 0) {
+				break;
+			case 3:
 				label.setIcon(threeImg);
-			} else if (randomChoice == 0) {
+				break;
+			case 4:
 				label.setIcon(fourImg);
-			} else if (randomChoice == 0) {
+				break;
+			case 5:
 				label.setIcon(fiveImg);
-			} else {
+				break;
+			case 6:
 				label.setIcon(sixImg);
+				break;
 			}
+
 		});
 
 		panel.setPreferredSize(new Dimension(700, 700));
